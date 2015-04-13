@@ -48,7 +48,7 @@ if ($result->num_rows > 0){
     echo "0 results";
 }
 $conn->close();
-header('Location: index.php'); 
+header('Location: user_home.php'); 
 /*$stmt = $conn->prepare($query);
 $stmt = $conn->bind_param("sss",$table,$user,$pass);
 $stmt->execute();

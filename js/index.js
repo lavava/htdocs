@@ -1,28 +1,46 @@
-$('input[type="submit"]').mousedown(function()
-{
-  $(this).css('background', '#2ecc71');
+//login dropdown script
+$(document).ready(function () {
+	$('#session').click(function () {
+		if ($('#signin-dropdown').is(":visible")) {
+			$('#signin-dropdown').hide()
+			$('#session').removeClass('active');
+		} else {
+			$('#signin-dropdown').show()
+			$('#session').addClass('active');
+		}
+		return false;
+	});
+	$('#signin-dropdown').click(function(e) {
+		e.stopPropagation();
+	});
+	$(document).click(function() {
+		$('#signin-dropdown').hide();
+		$('#session').removeClass('active');
+	});
+});   
+
+
+//slider script
+$('#slider').slidertron({
+		viewerSelector: '.viewer',
+		reelSelector: '.viewer .reel',
+		slidesSelector: '.viewer .reel .slide',
+		advanceDelay: 3000,
+		speed: 'slow',
+		navPreviousSelector: '.previous-button',
+		navNextSelector: '.next-button',
+		indicatorSelector: '.indicator li',
+		slideLinkSelector: '.link'
 });
-$('input[type="submit"]').mouseup(function()
-{
-  $(this).css('background', '#1abc9c');
-});
-
-$('#loginform').click(function()
-{
-  $('.login').fadeToggle('slow');
-  $(this).toggleClass('green');
-});
 
 
+$('#nav').dropotron();
 
-$(document).mouseup(function (e)
-{
-    var container = $(".login");
 
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0) // ... nor a descendant of the container
-    {
-        container.hide();
-        $('#loginform').removeClass('green');
-    }
+$('.gallery').poptrox({
+		overlayColor: '#222222',
+		overlayOpacity: 0.75,
+		popupCloserText: 'Close',
+		usePopupCaption: true,
+		usePopupDefaultStyling: false
 });

@@ -65,9 +65,13 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				<li>
 					<a href="logout.php" id="item">Logout</a>
 				</li>					
-				<li style="float:right">
-					 Hello '.$_SESSION['username'].
-				'!</li>';
+				<li class="user_name">
+					 Hello '.$_SESSION['username'].'! 
+				</li>
+				<li style="float:right" >
+					<a href="user_home.php">Home<a>
+				</li>
+				';
 				}
 				else{
 				

@@ -58,15 +58,20 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				<li class="first active">
 					<a href="about.php" id="item">About</a>
 				</li>
-<?php
+				
+		<?php
 				if($_SESSION['username']!='Guest'){
 				echo'
 				<li>
 					<a href="logout.php" id="item">Logout</a>
 				</li>					
-				<li style="float:right">
-					 Hello '.$_SESSION['username'].
-				'!</li>';
+				<li class="user_name">
+					 Hello '.$_SESSION['username'].'! 
+				</li>
+				<li style="float:right" >
+					<a href="user_home.php">Home<a>
+				</li>
+				';
 				}
 				else{
 				
@@ -109,8 +114,6 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 			
 				?>
 			</ul>
-
-
 			</div>
 			
 			<div id="main">
@@ -125,26 +128,17 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				<br class="clear" />
 				
 			</div>
-		</div>
 		<div id="copyright">
 			Akash Goel<br>
 			Anmol Singh Jaggi<br />
 			Aditya Rajan Tigga
 		</div>
+<script>
+
+//$('#nav').dropotron();
+
+</script>		
 		
-		<script type="text/javascript">
-			$('#nav').dropotron();
-		</script>	
-		
-			<script type="text/javascript">
-				$('.gallery').poptrox({
-					overlayColor: '#222222',
-					overlayOpacity: 0.75,
-					popupCloserText: 'Close',
-					usePopupCaption: true,
-					usePopupDefaultStyling: false
-				});
-			</script>
 			
 	</body>
 </html>
