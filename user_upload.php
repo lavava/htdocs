@@ -124,7 +124,8 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 			<ul>
 				<li>
 				<a href="user_home.php"><br />
-								My Account</a>				</li>
+				My Account</a>				
+				</li>
 				<li>
 				<a href="user_upload.php">Upload New</a>
 				</li>

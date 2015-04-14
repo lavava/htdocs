@@ -119,10 +119,12 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 
 		<!-- ****************************************************************************************************************** -->
 
+	<div class="container-div">
 		<div class="user_tabs">
 			<ul>
 				<li>
-				<a href="user_home.php">My Account</a>
+				<a href="user_home.php"><br />
+				My Account</a>	
 				</li>
 				<li>
 				<a href="user_upload.php">Upload New</a>
@@ -135,6 +137,9 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 			</ul>
 		
 		</div>
+		<div class="right_div">
+		</div>
+	</div>
 		<!-- ****************************************************************************************************************** -->			
 			
 	</body>
