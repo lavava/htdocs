@@ -42,7 +42,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 	</head>
 	<body>
 		
-		<div id="outer">
+		<div id="outer"> 
 		
 			<div id="logo">
 				<h1><a href="index.php">Artists<span>.net</span></a></h1>

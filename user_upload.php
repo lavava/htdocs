@@ -176,17 +176,13 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				<label for="title">
 				<span>Title:<br /></span> 
 				</label>
-				<input type="text" id="title" />
+				<input type="text" id="title" name="title" />
 				<br />
 				<label for="artist">
 				<span>Artist's name:<br /></span> 
 				</label>	
-				<input type="text" id="artist" />
+				<input type="text" id="artist" name="artist" />
 				<br/>
-				<label for="price">
-				<span>Asking price:<br /></span> 
-				</label>	
-				<input type="text" id="price" />
 				<br />
 				<br />
 				<br />
@@ -197,6 +193,15 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		</div>			
 	<div align="center" style="text-align:center">
 		<?php
+	require_once('connect.php');
+	require_once('connect_param.php');
+	
+	$dbc = new Connect();
+	$conn = $dbc->get_conn();
+	if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+	} 
+		
 	$directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
 	$target_dir = $uploadsDirectory = $_SERVER['DOCUMENT_ROOT'] . $directory_self . 'images/'.$_SESSION['username']."/";
 	  if (isset($_POST['submit'])) {
@@ -252,8 +257,35 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 					echo "<br>Sorry, your file was not uploaded.";
 				// if everything is ok, try to upload file
 				} else {
-					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+						$title = $_POST['title'];
+						$artist = $_POST['artist'];
+						$sold = FALSE;
+						$time = time();
+						echo "<br>";
+	echo "<br>";
+	echo "<br>";
+
+						echo $time;
+	echo "<br>";
+	echo "<br>";
+	echo "<br>";
+						
+						$id = substr($_POST['artist'],0,3).substr(basename($_FILES["fileToUpload"]["name"]),0,3).$time;
+						
+						
+						$query = "INSERT INTO images (title,artist,sold,path,time,id)  
+						VALUES ('$title','$artist','sold','$target_file','$time','$id')";
+						echo $query;
+						
+						$result = $conn->query($query);
+						echo $result;
+						
+						echo "<br>";
+
+					if ($result && move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 						echo "<br>The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+						
+
 					} else {
 						echo "<script>
 						window.alert(\"Sorry, there was an error uploading your file.\")
