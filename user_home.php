@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 	$_SESSION['status']='unauth';
 	$_SESSION['username']='Guest';
+	header('Location:index.php');
 }
 	
 ?>
