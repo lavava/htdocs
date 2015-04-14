@@ -194,13 +194,15 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				 
 			</div>
 		</div>			
-	<div align="center">
+	<div align="center" style="text-align:center">
 		<?php
 	$directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
 	$target_dir = $uploadsDirectory = $_SERVER['DOCUMENT_ROOT'] . $directory_self . 'images/'.$_SESSION['username']."/";
 	  if (isset($_POST['submit'])) {
 			if( !is_uploaded_file($_FILES['fileToUpload']['tmp_name']) ){
-				echo "Select a file to upload";
+				echo "<script>
+						window.alert(\"Select a file to upload\")
+						</script>";
 				}
 		
 			else{
@@ -217,18 +219,25 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 						//echo "File is an image - " . $check["mime"] . ".";
 						$uploadOk = 1;
 					} else {
-						echo "File is not an image.";
+						echo "<script>
+						window.alert(\"File is not an image.\")
+						</script>"; 
 						$uploadOk = 0;
 					}
 				
 				// Check if file already exists
 				if (file_exists($target_file)) {
-					echo "<br>Sorry, file already exists.";
+					echo "<script>
+						window.alert(\"Sorry, file already exists. Check your gallery or select a different title.\")
+						</script>"; 
 					$uploadOk = 0;
 				}
 				// Check file size
 				if ($_FILES["fileToUpload"]["size"] > 500000) {
-					echo "<br>Sorry, your file is too large.";
+					echo "<script>
+						window.alert(\"Sorry, your file is too large.\")
+						</script>"; 
+	
 					$uploadOk = 0;
 				}
 				// Allow certain file formats
@@ -245,7 +254,9 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 						echo "<br>The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
 					} else {
-						echo "<br>Sorry, there was an error uploading your file.";
+						echo "<script>
+						window.alert(\"Sorry, there was an error uploading your file.\")
+						</script>";
 					}
 				}
 			}
