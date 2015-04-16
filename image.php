@@ -4,8 +4,11 @@ session_start();
 if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 	$_SESSION['status']='unauth';
 	$_SESSION['username']='Guest';
+	header('Location:index.php');
 }
-?><html xmlns="http://www.w3.org/1999/xhtml">
+	
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
@@ -18,7 +21,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<script type="text/javascript" src="js/jquery.poptrox-1.0.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
-			$('#signin-link').click(function () {
+			$('#session').click(function () {
 					if ($('#signin-dropdown').is(":visible")) {
 						$('#signin-dropdown').hide()
 						$('#session').removeClass('active');
@@ -37,10 +40,9 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				});
 			});     
 		</script>
-
-		
 	</head>
 	<body>
+		
 		<div id="outer">
 		
 			<div id="logo">
@@ -55,11 +57,10 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				<li>
 					<a href="browse.php" id="item">Browse</a>
 				</li>				
-				<li class="first active">
+				<li>
 					<a href="about.php" id="item">About</a>
 				</li>
-				
-		<?php
+				<?php
 				if($_SESSION['username']!='Guest'){
 				echo'
 				<li>
@@ -68,7 +69,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				<li class="user_name">
 					 Hello '.$_SESSION['username'].'! 
 				</li>
-				<li style="float:right" >
+				<li style="float:right" class="first active">
 					<a href="user_home.php">Home<a>
 				</li>
 				';
@@ -114,31 +115,73 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 			
 				?>
 			</ul>
-			</div>
+
+
+		<!-- ****************************************************************************************************************** -->
+
+	<div class="container-div">
+		<div class="user_tabs">
+			<ul>
+				<li>
+				<a href="user_home.php"><br />
+				My Account</a>	
+				</li>
+				<li>
+				<a href="user_upload.php">Upload New</a>
+				</li>
+				<li>
+				</li>
+				<li>
+				</li>
 			
+			</ul>
+		
+		</div>
+		<div class="right_div">
+		</div>
+	</div>
 			<div id="main">
 			
-				<ul class="gallery">
-				<p style="margin-left:150px;margin-top:100px">
-				artist.net is tool to publish and promote your artistic works online. <br />
-				Use the reach of technology and easily reach millions of people and get yourself known.
-					
-				</ul>
-
-				<br class="clear" />
+				
+	<?php
+		require_once("connect.php");
+		$user = $_SESSION['username'];
+		$dbc = new Connect();
+		$conn = $dbc->get_conn();
+		//$conn = new mysqli('localhost','root','','webtech');
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
+		$id = $_GET['id'];
+		$query = "SELECT * FROM images WHERE id = '$id'";
+		$result = $conn->query($query);
+		if(!$result)
+		echo "Not an object";
+		
+		if ($result->num_rows > 0){
+			$row = $result->fetch_assoc(); 
+			echo 
+			"<h2>".$row['title']."</h2>
+			<img class='top' src='".$row['path']."' alt='alt_text' />";		
+			}
+	?>
+		<br class="clear" />
 				
 			</div>
-		<div id="copyright">
-			Akash Goel<br>
-			Anmol Singh Jaggi<br />
-			Aditya Rajan Tigga
 		</div>
-<script>
-
-//$('#nav').dropotron();
-
-</script>		
+		<!-- ****************************************************************************************************************** -->			
+		<script type="text/javascript">
+			$('#nav').dropotron();
+		</script>	
 		
-			
+			<script type="text/javascript">
+				$('.gallery').poptrox({
+					overlayColor: '#222222',
+					overlayOpacity: 0.75,
+					popupCloserText: 'Close',
+					usePopupCaption: true,
+					usePopupDefaultStyling: false
+				});
+			</script>
 	</body>
 </html>

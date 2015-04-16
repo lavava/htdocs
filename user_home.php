@@ -13,7 +13,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<title>Artists.net</title>
+		<title>artists.net</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.dropotron-1.0.js"></script>	
@@ -46,7 +46,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<div id="outer">
 		
 			<div id="logo">
-				<h1><a href="index.php">Artists<span>.net</span></a></h1>
+				<h1><a href="index.php">artists<span>.net</span></a></h1>
 			</div>
 		
 				
@@ -79,7 +79,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				echo 
 				'<li class="active-links">
       				<div id="session">
-						<a id="signin-link" href="#">Artist Login</a>
+						<a id="signin-link" href="#">artist Login</a>
 					</div>
 				  <div id="login-content">
 	        		  <div id="signin-dropdown">
@@ -140,7 +140,66 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<div class="right_div">
 		</div>
 	</div>
-		<!-- ****************************************************************************************************************** -->			
+	<div id="main">
 			
+				<ul class="gallery">
+				
+	<?php
+		require_once("connect.php");
+		$user = $_SESSION['username'];
+		$dbc = new Connect();
+		$conn = $dbc->get_conn();
+		//$conn = new mysqli('localhost','root','','webtech');
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
+		$query = "SELECT * FROM images WHERE user = '$user'";
+		$result = $conn->query($query);
+		if(!$result)
+		echo "Not an onject";
+		
+		if ($result->num_rows > 0){
+			// output data of each row
+//			echo "Results are populated<br>";
+//			$row_all = $result->fetch_all(); 
+//			foreach($row_all as $row){
+			$i=0;
+			while($row= $result->fetch_assoc()){
+			$i=$i+1;
+			echo 
+				"<li>
+				<h3>".$i."</h3>
+				<a href='".$row['path']."'><img class='top' src='".$row['path']."' width='260' height='200' title='
+				<a href=\"/image.php?id=".$row['id']."\">".$row['title']."</a>
+				' alt='alt_text' /></a>
+				</li>";		
+				}
+						
+						//echo $row['path']; 
+			//  
+			}
+					
+	?>
+					
+				</ul>
+
+				<br class="clear" />
+				
+			</div>
+		</div>
+		<!-- ****************************************************************************************************************** -->			
+		<script type="text/javascript">
+			$('#nav').dropotron();
+		</script>	
+		
+			<script type="text/javascript">
+				$('.gallery').poptrox({
+					overlayColor: '#222222',
+					overlayOpacity: 0.75,
+					popupCloserText: 'Close',
+					usePopupCaption: true,
+					usePopupDefaultStyling: false
+				});
+			</script>
 	</body>
 </html>

@@ -11,7 +11,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<title>Artists.net</title>
+		<title>artists.net</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.dropotron-1.0.js"></script>	
@@ -45,7 +45,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<div id="outer">
 		
 			<div id="logo">
-				<h1><a href="index.php">Artists<span>.net</span></a></h1>
+				<h1><a href="index.php">artists<span>.net</span></a></h1>
 			</div>
 		
 				
@@ -78,7 +78,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				echo 
 				'<li class="active-links">
       				<div id="session">
-						<a id="signin-link" href="#">Artist Login</a>
+						<a id="signin-link" href="#">artist Login</a>
 					</div>
 				  <div id="login-content">
 	        		  <div id="signin-dropdown">

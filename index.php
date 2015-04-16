@@ -12,7 +12,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<title>Artists.net</title>
+		<title>artists.net</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.dropotron-1.0.js"></script>	
@@ -45,7 +45,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<div id="outer"> 
 		
 			<div id="logo">
-				<h1><a href="index.php">Artists<span>.net</span></a></h1>
+				<h1><a href="index.php">artists<span>.net</span></a></h1>
 			</div>
 		
 				
@@ -79,7 +79,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				echo 
 				'<li class="active-links">
       				<div id="session">
-						<a id="signin-link" href="#">Artist Login</a>
+						<a id="signin-link" href="#">artist Login</a>
 					</div>
 				  <div id="login-content">
 	        		  <div id="signin-dropdown">
@@ -124,49 +124,49 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 					<ul class="reel">
 						<li class="slide">
 							<h2>Painting name</h2>
-							<p>Artist name</p>
+							<p>artist name</p>
 						  <a class="link" href="images/paintings/monastery.jpg"></a>
 							<img src="images/paintings/monastery.jpg" width="1180" height="260" alt="" />
 						</li>
 						<li class="slide">
 							<h2>Painting name</h2>
-							<p>Artist name</p>
+							<p>artist name</p>
 							<a class="link" href="images/paintings/whale.jpg">Full story ...</a>
 							<img src="images/paintings/whale.jpg" width="1180" height="260" alt="" />
 						</li>
 						<li class="slide">
 							<h2>Painting name</h2>
-							<p>Artist name</p>
+							<p>artist name</p>
 							<a class="link" href="images/paintings/bench.jpg">Full story ...</a>
 							<img src="images/paintings/bench.jpg" width="1180" height="260" alt="" />
 						</li>
 						<li class="slide">
 							<h2>Painting name</h2>
-							<p>Artist name</p>
+							<p>artist name</p>
 							<a class="link" href="images/paintings/horse.jpg">Full story ...</a>
 							<img src="images/paintings/horse.jpg" width="1180" height="260" alt="" />
 						</li>
 						<li class="slide">
 							<h2>Painting name</h2>
-							<p>Artist name</p>
+							<p>artist name</p>
 							<a class="link" href="images/paintings/island.jpg">Full story ...</a>
 							<img src="images/paintings/island.jpg" width="1180" height="260" alt="" />
 						</li>
 						<li class="slide">
 							<h2>Painting name</h2>
-							<p>Artist name</p>
+							<p>artist name</p>
 							<a class="link" href="images/paintings/lane.jpg">Full story ...</a>
 							<img src="images/paintings/lane.jpg" width="1180" height="260" alt="" />
 						</li>
 						<li class="slide">
 							<h2>Painting name</h2>
-							<p>Artist name</p>
+							<p>artist name</p>
 							<a class="link" href="images/paintings/monalisa.jpg">Full story ...</a>
 							<img src="images/paintings/monalisa.jpg" width="1180" height="260" alt="" />
 						</li>
 						<li class="slide">
 							<h2>Painting name</h2>
-							<p>Artist name</p>
+							<p>artist name</p>
 							<a class="link" href="paintings/village.jpg">Full story ...</a>
 							<img src="images/paintings/village.jpg" width="1180" height="260" alt="" />
 						</li>

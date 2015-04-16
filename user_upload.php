@@ -13,7 +13,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<title>Artists.net</title>
+		<title>artists.net</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.dropotron-1.0.js"></script>	
@@ -46,7 +46,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 	<div id="outer">
 		
 			<div id="logo">
-				<h1><a href="index.php">Artists<span>.net</span></a></h1>
+				<h1><a href="index.php">artists<span>.net</span></a></h1>
 			</div>
 		
 				
@@ -79,7 +79,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				echo 
 				'<li class="active-links">
       				<div id="session">
-						<a id="signin-link" href="#">Artist Login</a>
+						<a id="signin-link" href="#">artist Login</a>
 					</div>
 				  <div id="login-content">
 	        		  <div id="signin-dropdown">
@@ -179,7 +179,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				<input type="text" id="title" name="title" />
 				<br />
 				<label for="artist">
-				<span>Artist's name:<br /></span> 
+				<span>artist's name:<br /></span> 
 				</label>	
 				<input type="text" id="artist" name="artist" />
 				<br/>
@@ -204,6 +204,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		
 	$directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
 	$target_dir = $uploadsDirectory = $_SERVER['DOCUMENT_ROOT'] . $directory_self . 'images/'.$_SESSION['username']."/";
+	$save_dir = 'images/'.$_SESSION['username']."/";
 	  if (isset($_POST['submit'])) {
 			if( !is_uploaded_file($_FILES['fileToUpload']['tmp_name']) ){
 				echo "<script>
@@ -216,6 +217,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				mkdir($target_dir, 0777, true);
 					}
 				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+				$path = $save_dir.basename($_FILES["fileToUpload"]["name"]);
 				$uploadOk = 1;
 				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 				// Check if image file is a actual image or fake image
@@ -259,6 +261,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				} else {
 						$title = $_POST['title'];
 						$artist = $_POST['artist'];
+						$user = $_SESSION['username'];
 						$sold = FALSE;
 						$time = time();
 						echo "<br>";
@@ -273,8 +276,8 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 						$id = substr($_POST['artist'],0,3).substr(basename($_FILES["fileToUpload"]["name"]),0,3).$time;
 						
 						
-						$query = "INSERT INTO images (title,artist,sold,path,time,id)  
-						VALUES ('$title','$artist','sold','$target_file','$time','$id')";
+						$query = "INSERT INTO images (title,user,artist,sold,path,time,id)  
+						VALUES ('$title','$user','$artist','sold','$path','$time','$id')";
 						echo $query;
 						
 						$result = $conn->query($query);
