@@ -28,7 +28,7 @@ else{
 }
 //sanitize
 $user = email_filter($_POST['username']);
-$pass = md5($_POST['password']);
+$pass = $_POST['password'];
 //$pass = (md5(sanitize($_POST['password'])));
 $table = "users";
 

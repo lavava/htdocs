@@ -79,7 +79,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 				echo 
 				'<li class="active-links">
       				<div id="session">
-						<a id="signin-link" href="#">artist Login</a>
+						<a id="signin-link" href="#">Login</a>
 					</div>
 				  <div id="login-content">
 	        		  <div id="signin-dropdown">
@@ -105,7 +105,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 								<p>
 								<a class="forgot" href="#">Forgot your password</a>
 								<br>
-								<a class="register" href="#">Don\'t have an account? Register!</a>								</p>
+								<a class="register" href="register.php">Don\'t have an account? Register!</a>								</p>
 							  </form>
 					  </div>
        			  </div>                     
