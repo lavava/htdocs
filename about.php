@@ -18,6 +18,7 @@ if(!isset($_SESSION['status'])||$_SESSION['status']!='authorized'){
 		<script type="text/javascript" src="js/jquery.dropotron-1.0.js"></script>	
 		<script type="text/javascript" src="js/jquery.slidertron-1.0.js"></script>
 		<script type="text/javascript" src="js/jquery.poptrox-1.0.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function () {
 			$('#signin-link').click(function () {
